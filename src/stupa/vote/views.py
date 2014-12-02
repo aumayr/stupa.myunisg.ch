@@ -2,4 +2,5 @@ from django.http import HttpResponse
 from django.shortcuts import render
 
 def index(request):
-    return HttpResponse("Django says hey there world!")
+    context_dict = { 'message': "I am text from the context" }
+    return render(request, 'index.html', context_dict)
