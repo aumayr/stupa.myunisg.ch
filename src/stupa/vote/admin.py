@@ -1,3 +1,7 @@
 from django.contrib import admin
+from .models import Session, Question, Hashcode, Answer
 
-# Register your models here.
+admin.site.register(Session)
+admin.site.register(Question)
+admin.site.register(Hashcode)
+admin.site.register(Answer)
