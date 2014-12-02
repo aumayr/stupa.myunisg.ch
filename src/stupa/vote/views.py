@@ -50,7 +50,7 @@ def generate_hashcodes(request):
         new_anon_hashcode.save()
         hashcodes_anonymous.append(new_anon_hashcode)
 
-    context_dict = { 'hashcodes_users': hashcodes_users, 'hashcodes_anonymous': hashcodes_anonymous }
+    context_dict = { 'session': session, 'hashcodes_users': hashcodes_users, 'hashcodes_anonymous': hashcodes_anonymous }
     return render(request, 'hashcodes.html', context_dict)
 
 def _generate_random_string(length=8):

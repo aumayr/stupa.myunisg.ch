@@ -1,8 +1,42 @@
-
-{% for user, hashcode in hashcodes_users.items %}
-    {{ user }}: {{ hashcode.code }}<br>
-{% endfor %}
-<br><br>
-{% for hashcode in hashcodes_anonymous %}
-    {{ hashcode.code }}<br>
-{% endfor %}
+<!DOCTYPE html>
+{% load static %}
+<html>
+    <head>
+        <title>StuPa</title>
+        <link href="{% static "css/hashcodes.css" %}" media="screen, projection, print" rel="stylesheet" type="text/css" />
+        <script type="text/javascript" src="{% static "javascript/jquery/jquery-1.11.1.min.js" %}"></script>
+        <script type="text/javascript" src="{% static "javascript/jsbarcode/CODE128.js" %}"></script>
+        <script type="text/javascript" src="{% static "javascript/jsbarcode/JsBarcode.js" %}"></script>
+    </head>
+    <body>
+        <div id="container">
+            <h1>{{ session.name }}</h1>
+            <div id="userhashcodes">
+                {% for user, hashcode in hashcodes_users.items %}
+                    <div class="hashcode userhashcode">
+                        <span class="user">{{ user }}</span>
+                        <span class="code">{{ hashcode.code }}</span>
+                        <img id="hashcode-{{ hashcode.id }}" class="hashcodebarcode">
+                    </div>
+                {% endfor %}
+            </div>
+            <div id="anonhashcodes">
+                {% for hashcode in hashcodes_anonymous %}
+                    <div class="hashcode anonhashcode">
+                        <span class="user">Anonym</span>
+                        <span class="code">{{ hashcode.code }}</span>
+                        <img id="hashcode-{{ hashcode.id }}" class="hashcodebarcode">
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+        <script>
+        $(document).ready(function() {
+            $('img.hashcodebarcode').each(function() {
+                var $img = $(this);
+                $img.JsBarcode($img.prev().html(), { width: 1, height: 12});
+            });
+        });
+        </script>
+    </body>
+</html>
