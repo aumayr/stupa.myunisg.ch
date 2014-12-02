@@ -3,8 +3,59 @@
  * Import this file using the following HTML or equivalent:
  * <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css" /> */
 
-@import "compass/reset";
+// @import "compass/reset";
 
-body {
-    background: lightblue;
+#content {
+    h3 {
+        color: #999;
+        font-weight: normal;
+        font-size: 12px;
+    }
+
+    .box {
+        border: 1px solid #ccc;
+        // border-bottom: 1px solid #eee;
+        background: white;
+        padding: 10px 16px 8px 16px;
+        margin-bottom: 10px;
+
+        .question {
+            display: block;
+            text-align: center;
+            color: black;
+            font-weight: bold;
+            font-size: 18px;
+            line-height: 20px;
+        }
+
+        .voteboxes {
+            margin-top: 20px;
+            text-align: center;
+
+            button {
+                font-size: 12px;
+            }
+        }
+    }
+
+
+    ul.messages.loginmessages {
+        width: 320px;
+    }
+
+    form#loginform {
+        width: 320px;
+
+        label { width: 120px; }
+        input {
+            font: Monaco, monospace;
+            font-size: 14px;
+        }
+    }
+
+    ul.messages {
+        background: transparent;
+        padding: 0;
+        border-radius: 0;
+    }
 }

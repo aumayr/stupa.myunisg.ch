@@ -1,3 +1,6 @@
+{% extends "_base.html" %}
+
+{% block content %}
 <form action="{% url 'generate_hashcodes' %}" method="post">
     {% csrf_token %}
     <select name="session_id">
@@ -13,3 +16,4 @@
     <input type="text" name="number_of_hashcodes">
     <input type="submit">
 </form>
+{% endblock %}

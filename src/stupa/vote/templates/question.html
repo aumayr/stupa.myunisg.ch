@@ -1,0 +1,41 @@
+{% extends "_base.html" %}
+
+{% block content %}
+<h1>Aktuelle Abstimmung</h1>
+{# <h3>Aktuelle Abstimmung</h3> #}
+{% if question %}
+    {% if has_voted %}
+        <div class="box">
+            <h1 class="question">{{ question.text }}</h1>
+            <div class="voteboxes">
+                <button disabled="disabled" type="button" value="YES" name="choice">Daf&uuml;r</button>
+                <button disabled="disabled" type="button" value="NO" name="choice">Dagegen</button>
+                <button disabled="disabled" type="button" value="ABST" name="choice">Enthaltung</button>
+                <h3>Du hast bereits bei dieser Abstimmung abgestimmt.</h3>
+            </div>
+        </div>
+    {% else %}
+        <form action="{% url 'vote' %}" method="post">
+            {% csrf_token %}
+            <div class="box">
+                <h1 class="question">{{ question.text }}</h1>
+                <div class="voteboxes">
+                    <button type="submit" value="YES" name="choice">Daf&uuml;r</button>
+                    <button type="submit" value="NO" name="choice">Dagegen</button>
+                    <button type="submit" value="ABST" name="choice">Enthaltung</button>
+                </div>
+                <input type="hidden" value="{{ question.id }}" name="question_id">
+            </div>
+        </form>
+    {% endif %}
+{% else %}
+    <div class="box">
+        <div class="voteboxes">
+                <button disabled="disabled" type="button" value="YES" name="choice">Daf&uuml;r</button>
+                <button disabled="disabled" type="button" value="NO" name="choice">Dagegen</button>
+                <button disabled="disabled" type="button" value="ABST" name="choice">Enthaltung</button>
+                <h3>Derzeit keine laufende Abstimmung.</h3>
+            </div>
+    </div>
+{% endif %}
+{% endblock %}

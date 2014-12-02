@@ -32,9 +32,23 @@ class Question(models.Model):
         return self.time_opened and not self.time_closed
     is_open.boolean = True  # for Django Admin
 
-    # TODO def result(self)   => tuple of (YES, NO, ABST)
-    # TODO def valid_result() => checks if the count of answers is equal to
-    #                            number_of_voters
+    def number_of_votes_cast(self):
+        return Answer.objects.filter(question=self).count()
+
+    def result(self):
+        return {
+            'yes':  Answer.objects.filter(question=self, choice='YES').count(),
+            'no':   Answer.objects.filter(question=self, choice='NO').count(),
+            'abst': Answer.objects.filter(question=self, choice='ABST').count()
+        }
+
+    def result_string(self):
+        result = self.result()
+        number_of_votes_cast = self.number_of_votes_cast()
+        return "%s (%s Ja, %s Nein, %s Enthaltung)" % (number_of_votes_cast, result['yes'], result['no'], result['abst'])
+
+    def valid_result(self):
+        return self.number_of_voters == self.number_of_votes_cast
 
     def __unicode__(self):
         return self.text
@@ -60,6 +74,10 @@ class Answer(models.Model):
         ('ABST', 'abstention'),
     )
 
+    question = models.ForeignKey(Question)
     hashcode = models.ForeignKey(Hashcode)
     choice = models.CharField(max_length=4,
                              choices=TYPE_OF_ANSWER)
+
+    def __unicode__(self):
+        return "Answer (%s, %s)" % (self.question.text, self.hashcode)

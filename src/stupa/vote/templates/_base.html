@@ -1,0 +1,33 @@
+
+<!DOCTYPE html>
+{% load static %}
+<html>
+    <head>
+        <title>StuPa</title>
+        <link href="{% static "admin/css/base.css" %}" media="screen, projection" rel="stylesheet" type="text/css" />
+        <link href="{% static "admin/css/forms.css" %}" media="screen, projection" rel="stylesheet" type="text/css" />
+        <link href="{% static "css/screen.css" %}" media="screen, projection" rel="stylesheet" type="text/css" />
+    </head>
+    <body>
+        <div id="container">
+            <div id="header">
+                <div id="branding">
+                    <h1 id="site-name"><a href="/admin/">Django administration</a></h1>
+                </div>
+                <div id="user-tools">
+                    Welcome,
+                    <strong>dominik</strong>.
+                    <a href="/admin/logout/">Log out</a>
+                </div>
+            </div>
+            <div class="breadcrumbs">
+                <a href="/admin/">Home</a>
+                &rsaquo; <a href="/admin/vote/">Vote</a>
+                &rsaquo; Answers
+            </div>
+            <div id="content" class="flex">
+                {% block content %}{% endblock %}
+            </div>
+        </div>
+    </body>
+</html>

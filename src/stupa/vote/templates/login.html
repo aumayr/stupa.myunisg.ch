@@ -1,0 +1,34 @@
+{% extends "_base.html" %}
+
+{% block content %}
+<h1>Login f&uuml;r Parlamentarier</h1>
+
+{% if messages %}
+<ul class="messages loginmessages">
+    {% for message in messages %}
+    <li{% if message.tags %} class="{{ message.tags }}{% if message.level == DEFAULT_MESSAGE_LEVELS.ERROR %} errornote{% endif %}"{% endif %}>
+        {{ message }}
+    </li>
+    {% endfor %}
+</ul>
+{% endif %}
+
+<form action="{% url 'login' %}" method="post" id="loginform">
+    {% csrf_token %}
+    <fieldset class="module aligned">
+        <div class="form-row">
+            <div>
+                <label class="required" for="user_hashcode">Benutzer Hashcode:</label><input type="text" name="user_hashcode">
+            </div>
+        </div>
+        <div class="form-row">
+            <div>
+                <label class="required" for="anonymous_hashcode">Anonymer Hashcode:</label><input type="text" name="anonymous_hashcode">
+            </div>
+        </div>
+    </fieldset>
+    <div class="submit-row">
+        <input type="submit" value="Login" class="default" name="">
+    </div>
+</form>
+{% endblock %}

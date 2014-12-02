@@ -1,16 +1,10 @@
-<!DOCTYPE html>
-{% load static %}
-<html>
-    <head>
-        <title>StuPa</title>
-        <link href="{% static "css/screen.css" %}" media="screen, projection" rel="stylesheet" type="text/css" />
-    </head>
-    <body>
-        <h1>StuPa-Votingtool</h1>
-        <ol>
-            <li><a href="{% url 'index' %}">Parlamentarier verwalten</a></li>
-            <li><a href="#">Neue Hashcodes generieren und drucken</a></li>
-            <li><a href="#">Sitzungen verwalten</a></li>
-        </ol>
-    </body>
-</html>
+{% extends "_base.html" %}
+
+{% block content %}
+<h1>StuPa-Votingtool</h1>
+<ol>
+    <li><a href="{% url 'index' %}">Parlamentarier verwalten</a></li>
+    <li><a href="#">Neue Hashcodes generieren und drucken</a></li>
+    <li><a href="#">Sitzungen verwalten</a></li>
+</ol>
+{% endblock %}
