@@ -14,7 +14,7 @@
         <thead>
             <tr>
                 <th><div class="text"><span>Text</span></div></th>
-                <th><div class="text"><span>Geschlossen</span></div></th>
+                <th><div class="text"><span>Abgeschlossen</span></div></th>
                 <th><div class="text"><span>Berechtigt</span></div></th>
                 <th><div class="text"><span>Abgegeben</span></div></th>
                 <th><div class="text"><span>Check</span></div></th>
@@ -25,8 +25,16 @@
         </thead>
         <tbody>
         {% for question in session.question_set.all %}
-            <tr>
-                <td>{{ question.text }}</td>
+            <tr class="question" id="question-{{ question.id }}">
+                <td>
+                    {{ question.text }}
+                    {% if question.type_of_question == 'OPEN' %}
+                        <a href="#show-answers" class="showusers">(Parlamentarier anzeigen)</a>
+                        <a href="#show-answers" class="hideusers" style="display: none;">(Parlamentarier ausblenden)</a>
+                    {% else %}
+                    (Geheime Abstimmung)
+                    {% endif %}
+                </td>
                 <td class="center">
                     {% if question.is_open %}
                         <img src="{% static "admin/img/icon-no.gif" %}" alt="OK">
@@ -49,8 +57,48 @@
                     <td class="center result result-abst">{{ result.abst }}</td>
                 {% endwith %}
             </tr>
+            {% if question.type_of_question == 'OPEN' %}
+                {% for answer in question.answer_set.all %}
+                    <tr class="question-{{ question.id }}-answer" id="answer-{{ answer.id }}" style="display: none;">
+                        <td colspan="5" class="right">{{ answer.hashcode.user }}</td>
+                        {% if answer.choice == 'YES' %}
+                            <td class="center result result-yes2">Daf&uuml;r</td>
+                        {% else %}
+                            <td></td>
+                        {% endif %}
+                        {% if answer.choice == 'NO' %}
+                            <td class="center result result-no2">Dagegen</td>
+                        {% else %}
+                            <td></td>
+                        {% endif %}
+                        {% if answer.choice == 'YES' %}
+                            <td class="center result result-abst2">Enth.</td>
+                        {% else %}
+                            <td></td>
+                        {% endif %}
+                    </tr>
+                {% endfor %}
+            {% endif %}
         {% endfor %}
         </tbody>
     </table>
 {% endfor %}
+
+<script type="text/javascript">
+    $(document).ready(function() {
+        $( "table.resulttable tr.question a").on("click", function() {
+            $link = $(this);
+            $answers = $('.' + $(this).parent().parent().attr('id') + '-answer');
+            if ($link.hasClass('showusers')) {
+                $answers.show();
+                $link.hide();
+                $link.next().show();
+            } else {
+                $answers.hide();
+                $link.hide();
+                $link.prev().show();
+            }
+        });
+    });
+</script>
 {% endblock %}

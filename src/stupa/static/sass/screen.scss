@@ -69,10 +69,14 @@
         tbody tr:last-child td { border-bottom: 1px solid #ccc !important; }
 
         td.center { text-align: center; }
+        td.right { text-align: right; }
         td.result { font-weight: bold; width: 45px; }
         td.result-yes { background: #78CB79; }
         td.result-no { background: #D04A4C; }
         td.result-abst { background: #FFF474; }
+        td.result-yes2 { background: #C9ECCA; }
+        td.result-no2 { background: #E8ACB0; }
+        td.result-abst2 { background: #FBFBC0; }
     }
 
     form#generatehashcodes {

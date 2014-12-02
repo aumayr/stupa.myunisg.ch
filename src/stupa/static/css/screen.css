@@ -83,38 +83,54 @@
   text-align: center;
 }
 /* line 72, ../sass/screen.scss */
+#content table.resulttable td.right {
+  text-align: right;
+}
+/* line 73, ../sass/screen.scss */
 #content table.resulttable td.result {
   font-weight: bold;
   width: 45px;
 }
-/* line 73, ../sass/screen.scss */
+/* line 74, ../sass/screen.scss */
 #content table.resulttable td.result-yes {
   background: #78CB79;
 }
-/* line 74, ../sass/screen.scss */
+/* line 75, ../sass/screen.scss */
 #content table.resulttable td.result-no {
   background: #D04A4C;
 }
-/* line 75, ../sass/screen.scss */
+/* line 76, ../sass/screen.scss */
 #content table.resulttable td.result-abst {
   background: #FFF474;
 }
+/* line 77, ../sass/screen.scss */
+#content table.resulttable td.result-yes2 {
+  background: #C9ECCA;
+}
+/* line 78, ../sass/screen.scss */
+#content table.resulttable td.result-no2 {
+  background: #E8ACB0;
+}
 /* line 79, ../sass/screen.scss */
+#content table.resulttable td.result-abst2 {
+  background: #FBFBC0;
+}
+/* line 83, ../sass/screen.scss */
 #content form#generatehashcodes label {
   width: 180px;
 }
-/* line 81, ../sass/screen.scss */
+/* line 85, ../sass/screen.scss */
 #content form#generatehashcodes div.userlist {
   margin-left: 190px;
 }
-/* line 84, ../sass/screen.scss */
+/* line 88, ../sass/screen.scss */
 #content form#generatehashcodes div.userlist span {
   display: inline-block;
   float: left;
   margin: 0 30px 10px 0;
   width: 160px;
 }
-/* line 90, ../sass/screen.scss */
+/* line 94, ../sass/screen.scss */
 #content form#generatehashcodes div.userlist span input {
   margin-right: 5px;
 }

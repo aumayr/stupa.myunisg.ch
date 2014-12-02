@@ -10,6 +10,8 @@ from django.http import HttpResponse
 from django.shortcuts import render, redirect
 from .models import User, Session, Hashcode, Question, Answer
 
+# TODO prevent double-use of anon hashcodes
+
 def index(request):
     if request.user.is_authenticated():
         if request.user.is_staff:
