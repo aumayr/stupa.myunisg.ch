@@ -1,3 +1,4 @@
-src/stupa/db.sqlite3
+*.sqlite3
 *.pyc
 *.scssc
+src/stupa/db.sqlite3

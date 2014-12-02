@@ -28,7 +28,10 @@ class Question(models.Model):
     class Meta:
         ordering = ['-ordering']
 
-    # TODO def is_open(self)  => time_opened set, time_closed not set
+    def is_open(self):
+        return self.time_opened and not self.time_closed
+    is_open.boolean = True  # for Django Admin
+
     # TODO def result(self)   => tuple of (YES, NO, ABST)
     # TODO def valid_result() => checks if the count of answers is equal to
     #                            number_of_voters
@@ -38,14 +41,17 @@ class Question(models.Model):
 
 
 class Hashcode(models.Model):
-    created_at = models.DateTimeField()
+    created_at = models.DateTimeField(auto_now_add=True)
     session = models.ForeignKey(Session)
+    is_active = models.BooleanField(default=True)
     code = models.CharField(max_length=9)
-    user = models.ForeignKey(User, blank=True)
+    user = models.ForeignKey(User, blank=True, null=True)
 
     # TODO def was_used(self) => checks if there is an answer containing
     #                            this hashcode
 
+    def __unicode__(self):
+        return "%s: %s (%s)" % (self.session, self.code, self.user)
 
 class Answer(models.Model):
     TYPE_OF_ANSWER = (

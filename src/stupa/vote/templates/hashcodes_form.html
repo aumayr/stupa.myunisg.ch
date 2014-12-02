@@ -1,0 +1,15 @@
+<form action="{% url 'generate_hashcodes' %}" method="post">
+    {% csrf_token %}
+    <select name="session_id">
+        {% for session in sessions %}
+            <option value="{{ session.id }}">{{ session.name }}</option>
+        {% endfor %}
+    </select>
+
+    {% for user in users %}
+        <input type="checkbox" name="user_id" value="{{ user.id}}" checked="checked">{{ user }}<br>
+    {% endfor %}
+
+    <input type="text" name="number_of_hashcodes">
+    <input type="submit">
+</form>

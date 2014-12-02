@@ -1,0 +1,8 @@
+
+{% for user, hashcode in hashcodes_users.items %}
+    {{ user }}: {{ hashcode.code }}<br>
+{% endfor %}
+<br><br>
+{% for hashcode in hashcodes_anonymous %}
+    {{ hashcode.code }}<br>
+{% endfor %}
