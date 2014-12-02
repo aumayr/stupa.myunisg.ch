@@ -140,3 +140,8 @@ def vote(request):
   #      raise e
 
     return redirect('question')
+
+@login_required
+def results(request):
+    sessions = Session.objects.all()
+    return render(request, 'results.html', { 'sessions': sessions })

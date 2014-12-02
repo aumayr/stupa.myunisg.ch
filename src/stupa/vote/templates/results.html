@@ -1,0 +1,52 @@
+{% extends "_base.html" %}
+
+{% load static %}
+
+{% block content %}
+<h1>Abstimmungsergebnisse</h1>
+{% for session in sessions %}
+    <h3>{{ session.name }}</h3>
+    <table class="resulttable">
+        <thead>
+            <tr>
+                <th><div class="text"><span>Text</span></div></th>
+                <th><div class="text"><span>Geschlossen</span></div></th>
+                <th><div class="text"><span>Berechtigt</span></div></th>
+                <th><div class="text"><span>Abgegeben</span></div></th>
+                <th><div class="text"><span>Check</span></div></th>
+                <th><div class="text"><span>Daf&uuml;r</span></div></th>
+                <th><div class="text"><span>Dagegen</span></div></th>
+                <th><div class="text"><span>Entha.</span></div></th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for question in session.question_set.all %}
+            <tr>
+                <td>{{ question.text }}</td>
+                <td class="center">
+                    {% if question.is_open %}
+                        <img src="{% static "admin/img/icon-no.gif" %}" alt="OK">
+                    {% else %}
+                        <img src="{% static "admin/img/icon-yes.gif" %}" alt="Not OK">
+                    {% endif %}
+                </td>
+                <td class="center">{{ question.number_of_voters }}</td>
+                <td class="center">{{ question.number_of_votes_cast }}</td>
+                <td class="center">
+                    {% if question.number_of_votes_cast == question.number_of_voters %}
+                        <img src="{% static "admin/img/icon-yes.gif" %}" alt="OK">
+                    {% else %}
+                        <img src="{% static "admin/img/icon-no.gif" %}" alt="Not OK">
+                    {% endif %}
+                </td>
+                {% with result=question.result %}
+                    <td class="center result result-yes">{{ result.yes }}</td>
+                    <td class="center result result-no">{{ result.no }}</td>
+                    <td class="center result result-abst">{{ result.abst }}</td>
+                {% endwith %}
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+{% endfor %}
+{% endblock %}

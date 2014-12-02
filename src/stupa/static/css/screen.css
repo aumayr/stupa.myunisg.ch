@@ -1,3 +1,4 @@
+@charset "UTF-8";
 /* Welcome to Compass.
  * In this file you should write your main styles. (or centralize your imports)
  * Import this file using the following HTML or equivalent:
@@ -55,4 +56,46 @@
   background: transparent;
   padding: 0;
   border-radius: 0;
+}
+/* line 62, ../sass/screen.scss */
+#content table.resulttable {
+  background: white;
+  border: 1px solid #ccc;
+}
+/* line 66, ../sass/screen.scss */
+#content table.resulttable thead th {
+  border-top: 1px solid #ccc;
+}
+/* line 67, ../sass/screen.scss */
+#content table.resulttable thead th:first-child, #content table.resulttable tbody td:first-child {
+  border-left: 1px solid #ccc !important;
+}
+/* line 68, ../sass/screen.scss */
+#content table.resulttable thead th:last-child, #content table.resulttable tbody td:last-child {
+   border-right: 1px solid #ccc !important;
+}
+/* line 69, ../sass/screen.scss */
+#content table.resulttable tbody tr:last-child td {
+  border-bottom: 1px solid #ccc !important;
+}
+/* line 71, ../sass/screen.scss */
+#content table.resulttable td.center {
+  text-align: center;
+}
+/* line 72, ../sass/screen.scss */
+#content table.resulttable td.result {
+  font-weight: bold;
+  width: 45px;
+}
+/* line 73, ../sass/screen.scss */
+#content table.resulttable td.result-yes {
+  background: #78CB79;
+}
+/* line 74, ../sass/screen.scss */
+#content table.resulttable td.result-no {
+  background: #D04A4C;
+}
+/* line 75, ../sass/screen.scss */
+#content table.resulttable td.result-abst {
+  background: #FFF474;
 }
