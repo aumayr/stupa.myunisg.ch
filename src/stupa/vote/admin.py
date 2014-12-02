@@ -3,9 +3,11 @@ from django.contrib.auth.admin import UserAdmin
 from django.contrib.auth.models import User
 from django.contrib.contenttypes.models import ContentType
 from django.http import HttpResponseRedirect
+from django.shortcuts import redirect
 
 from .models import Session, Question, Hashcode, Answer
 
+admin.site.site_header = "Studentenparlament Administration"
 
 admin.site.register(Session)
 
@@ -33,10 +35,7 @@ class HashcodeAdmin(admin.ModelAdmin):
 admin.site.register(Hashcode, HashcodeAdmin)
 
 def generate_hashcodes(modeladmin, request, queryset):
-    # queryset.update(status='p')
-    selected = request.POST.getlist(admin.ACTION_CHECKBOX_NAME)
-    ct = ContentType.objects.get_for_model(queryset.model)
-    return HttpResponseRedirect("/vote/index/?ct=%s%s" % (ct.pk, "&ids=".join(selected)))
+    return redirect('hashcodes_form')
 
 generate_hashcodes.short_description = "Generate new hashcodes"
 

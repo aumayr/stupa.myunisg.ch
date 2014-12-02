@@ -104,3 +104,4 @@ TEMPLATE_DIRS = [
 # Login-Url
 
 LOGIN_URL = '/vote/login/'
+LOGOUT_URL = '/vote/logout/'

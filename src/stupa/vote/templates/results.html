@@ -2,6 +2,10 @@
 
 {% load static %}
 
+{% block breadcrumbs %}
+    &rsaquo; Ergebnisse
+{% endblock %}
+
 {% block content %}
 <h1>Abstimmungsergebnisse</h1>
 {% for session in sessions %}

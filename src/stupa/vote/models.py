@@ -29,7 +29,7 @@ class Question(models.Model):
         ordering = ['-ordering']
 
     def is_open(self):
-        return self.time_opened and not self.time_closed
+        return (self.time_opened and not self.time_closed)
     is_open.boolean = True  # for Django Admin
 
     def number_of_votes_cast(self):

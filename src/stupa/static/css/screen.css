@@ -99,3 +99,22 @@
 #content table.resulttable td.result-abst {
   background: #FFF474;
 }
+/* line 79, ../sass/screen.scss */
+#content form#generatehashcodes label {
+  width: 180px;
+}
+/* line 81, ../sass/screen.scss */
+#content form#generatehashcodes div.userlist {
+  margin-left: 190px;
+}
+/* line 84, ../sass/screen.scss */
+#content form#generatehashcodes div.userlist span {
+  display: inline-block;
+  float: left;
+  margin: 0 30px 10px 0;
+  width: 160px;
+}
+/* line 90, ../sass/screen.scss */
+#content form#generatehashcodes div.userlist span input {
+  margin-right: 5px;
+}

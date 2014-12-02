@@ -1,19 +1,36 @@
 {% extends "_base.html" %}
 
+{% block breadcrumbs %}
+    &rsaquo; Hashcodes erzeugen
+{% endblock %}
+
 {% block content %}
-<form action="{% url 'generate_hashcodes' %}" method="post">
+<form action="{% url 'generate_hashcodes' %}" method="post" id="generatehashcodes">
     {% csrf_token %}
-    <select name="session_id">
-        {% for session in sessions %}
-            <option value="{{ session.id }}">{{ session.name }}</option>
-        {% endfor %}
-    </select>
-
-    {% for user in users %}
-        <input type="checkbox" name="user_id" value="{{ user.id}}" checked="checked">{{ user }}<br>
-    {% endfor %}
-
-    <input type="text" name="number_of_hashcodes">
-    <input type="submit">
+    <fieldset class="module aligned">
+        <div class="form-row">
+            <div>
+                <label for="session_id">Sitzung:</label>
+                <select name="session_id">
+                    {% for session in sessions %}
+                        <option value="{{ session.id }}">{{ session.name }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+        </div>
+        <div class="form-row">
+            <div>
+                <label for="users_ids">Abstimmungsberechtigte Parlamentarier:</label>
+                <div class="userlist">
+                    {% for user in users %}
+                        <span><input type="checkbox" name="user_id" value="{{ user.id}}" checked="checked">{{ user }}</span>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </fieldset>
+    <div class="submit-row">
+        <input type="submit" value="Hashcodes erzeugen" class="default" name="">
+    </div>
 </form>
 {% endblock %}

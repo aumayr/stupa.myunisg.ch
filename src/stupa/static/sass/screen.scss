@@ -74,4 +74,21 @@
         td.result-no { background: #D04A4C; }
         td.result-abst { background: #FFF474; }
     }
+
+    form#generatehashcodes {
+        label { width: 180px; }
+
+        div.userlist {
+            margin-left: 190px;
+
+            span {
+                display: inline-block;
+                float: left;
+                margin: 0 30px 10px 0;
+                width: 160px;
+
+                input { margin-right: 5px; }
+            }
+        }
+    }
 }

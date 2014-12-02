@@ -1,6 +1,10 @@
 {% extends "_base.html" %}
 
+{% block breadcrumbs %}
+    &rsaquo; Aktuelle Abstimmung
+{% endblock %}
+
 {% block content %}
-<h1>Your vote has been counted. Thanks!</h1>
+<h1>Deine Stimme wurde gez&auml;hlt!</h1>
 <a href="{% url 'question' %}">&laquo; Zur&uuml;ck zur aktuellen Abstimmung</a>
 {% endblock %}
