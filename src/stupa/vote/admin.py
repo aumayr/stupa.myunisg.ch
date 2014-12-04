@@ -11,15 +11,9 @@ admin.site.site_header = "Studentenparlament Administration"
 
 admin.site.register(Session)
 
-class AnswerAdmin(admin.ModelAdmin):
-    list_display = ('question', 'hashcode', 'choice')
-    list_filter = ('question', 'choice')
-
-admin.site.register(Answer, AnswerAdmin)
-
 
 class QuestionAdmin(admin.ModelAdmin):
-    list_display = ('session', 'text', 'time_opened', 'time_closed', 'is_open', 'result_string', 'number_of_voters', 'number_of_votes_cast', 'type_of_question')
+    list_display = ('session', 'text', 'time_opened', 'is_open', 'type_of_question')
     list_filter = ('session', 'type_of_question')
     search_fields = ('text',)
 
