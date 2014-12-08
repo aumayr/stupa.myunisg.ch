@@ -1,5 +1,9 @@
-djamin (0.1, /Users/dominik/.virtualenvs/stupa/src/djamin)
-Django (1.7.1)
-pip (1.5.6)
-setuptools (3.6)
-wsgiref (0.1.2)
+Django==1.7.1
+dj-database-url==0.3.0
+dj-static==0.0.6
+-e git://github.com/hersonls/djamin.git@9bcec99c04d9cc909d619d08a8aace87de399f99#egg=djamin-master
+django-toolbelt==0.0.1
+gunicorn==19.1.1
+psycopg2==2.5.4
+static3==0.5.1
+wsgiref==0.1.2
