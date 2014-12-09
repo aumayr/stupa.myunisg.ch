@@ -3,9 +3,9 @@
 {% block content %}
 <h1>StuPa-Votingtool</h1>
 {% if user.is_staff %}
+    <a href="/admin">&raquo; Administrations-Bereich</a><br>
     <a href="{% url 'results' %}">&raquo; Abstimmungsergebnisse</a><br>
     <a href="{% url 'hashcodes_form' %}">&raquo; Hashcodes erzeugen</a>
-    </ol>
 {% else %}
     <ol>
         <li><a href="{% url 'question' %}">Aktuelle Abstimmungen</a></li>

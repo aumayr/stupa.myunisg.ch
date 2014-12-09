@@ -12,7 +12,7 @@
         <div id="container">
             <div id="header">
                 <div id="branding">
-                    <h1 id="site-name"><a href="/vote/">Studentenparlament der Universit&auml;t St.Gallen (HSG)</a></h1>
+                    <h1 id="site-name"><a href="/">Studentenparlament der Universit&auml;t St.Gallen (HSG)</a></h1>
                 </div>
                 <div id="user-tools">
                     {% if user.is_authenticated %}
@@ -20,12 +20,14 @@
                         <strong>{{ user }}</strong>.
                         <a href="{% url 'logout' %}">Ausloggen</a>
                     {% else %}
-                        <a href="{% url 'login' %}">Einloggen</a>
+                        <a href="{% url 'login' %}">Login Parlamentarier</a>
+                        &nbsp;&nbsp;&bull;&nbsp;&nbsp;
+                        <a href="/admin">Login Pr&auml;sidium</a>
                     {% endif %}
                 </div>
             </div>
             <div class="breadcrumbs">
-                <a href="/vote/">Abstimmungen</a>
+                <a href="/">Abstimmungen</a>
                 {% block breadcrumbs %}{% endblock %}
             </div>
             <div id="content" class="flex">

@@ -31,13 +31,13 @@ ALLOWED_HOSTS = []
 
 INSTALLED_APPS = (
     'djamin',
+    'vote',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
-    'django.contrib.staticfiles',
-    'vote'
+    'django.contrib.staticfiles'
 )
 
 MIDDLEWARE_CLASSES = (
@@ -104,8 +104,8 @@ TEMPLATE_DIRS = [
 
 # Login-Url
 
-LOGIN_URL = '/vote/login/'
-LOGOUT_URL = '/vote/logout/'
+LOGIN_URL = '/login/'
+LOGOUT_URL = '/logout/'
 
 # Heroku
 

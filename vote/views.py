@@ -158,8 +158,6 @@ def vote(request):
 
     return redirect('question')
 
-@login_required
-@user_passes_test(lambda u: u.is_staff)
 def results(request):
     sessions = Session.objects.all()
     return render(request, 'results.html', { 'sessions': sessions })
